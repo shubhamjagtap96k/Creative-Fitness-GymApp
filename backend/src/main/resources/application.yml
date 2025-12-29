@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: gymapp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gymApp_db
+    username: gymApp_db
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+# JWT Configuration
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+  expiration: 86400000 # 1 day
+
+server:
+  port: 8080
