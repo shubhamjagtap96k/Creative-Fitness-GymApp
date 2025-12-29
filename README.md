@@ -47,5 +47,24 @@ A secure, full-stack Gym Management application built with Spring Boot 3 and Rea
 - **Security**: Stateless session management, BCrypt password encoding.
 - **Frontend Core**: Auth Context, Protected Routes, Login/Register UI, Dashboard.
 
-## Known Issues
-- Network connectivity issues prevented automatic dependency installation during development. Please run `mvn clean install` and `npm install` to hydrate the project once connectivity is restored.
+
+## User Guide (How to Use)
+1. **Reset Database** (Important for first run or after schema changes):
+   - Stop the app.
+   - Run `docker-compose down -v` and then `docker-compose up -d`.
+   - OR manually drop `gymApp_db` and recreate it.
+   - Restart the Backend to let Flyway migrate the schema.
+
+2. **Accessing the App**:
+   - Open browser to `http://localhost:5173` (Frontend).
+   - Click **"Create an account"** to register.
+   - select **Role**: `MEMBER` or `OWNER`.
+   - Login with your new credentials.
+
+3. **Dashboard**:
+   - **Members**: Can view stats (placeholder) and upcoming classes.
+   - **Owners**: (Future) Will see management options.
+
+## Troubleshooting 
+- **"Password authentication failed"**: Check `application.yml` matches your Docker/Local DB credentials (`username: postgres`, `password: root` vs `gym_user/gym_password`).
+- **"SchemaManagementException" / "Validation Failed"**: This means your Java Entities don't match the DB Tables. **Solution**: Drop the database and restart the backend to recreate tables correctly.

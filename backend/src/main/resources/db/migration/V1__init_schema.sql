@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(50) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE profiles (
 );
 
 CREATE TABLE plans (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     duration_months INTEGER NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE plans (
 );
 
 CREATE TABLE user_subscriptions (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id),
     plan_id INTEGER REFERENCES plans(id),
     start_date DATE NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE user_subscriptions (
 );
 
 CREATE TABLE classes (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     instructor_name VARCHAR(100),
     start_time TIMESTAMP NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE classes (
 );
 
 CREATE TABLE bookings (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id),
     class_id INTEGER REFERENCES classes(id),
     booking_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
