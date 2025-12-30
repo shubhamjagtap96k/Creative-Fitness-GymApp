@@ -11,10 +11,7 @@
 	<groupId>com.creativefitness</groupId>
 	<artifactId>gymapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<modules>
-		<module>demo</module>
-	</modules>
+
 	<name>gymapp</name>
 	<description>Gym Management System</description>
 	<properties>
